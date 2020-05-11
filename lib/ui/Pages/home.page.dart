@@ -45,12 +45,11 @@ class _HomePageState extends State<HomePage> with RouteAware {
     var bloc = Provider.of<TarefaBloc>(context);
 
     return Scaffold(
-      // appBar: AppBarDate(context, "Tarefas"),
-      body: SingleChildScrollView(
+      body: Container(
         child: Column(
           children: <Widget>[
             AppBarDate(context, "Tarefas"),
-            Container(
+            Expanded(
               child: ListaTarefa(tarefas: bloc.tarefas),
             ),
           ],

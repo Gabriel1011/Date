@@ -51,7 +51,7 @@ class TabsPage extends StatelessWidget {
             icon: Column(
               children: <Widget>[
                 Icon(Icons.date_range),
-                Text("Agendas"),
+                Text("Agenda"),
               ],
             ),
           ),

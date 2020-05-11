@@ -36,10 +36,12 @@ class ListaTarefaArquivadas extends StatelessWidget {
           },
           background: Container(
             color: Colors.red.withOpacity(0.5),
-            child: Icon(
-              Icons.delete,
-              color: Colors.red.withOpacity(0.5),
-              size: 50,
+            child: Center(
+              child: Icon(
+                Icons.delete,
+                color: Colors.red.withOpacity(0.5),
+                size: 50,
+              ),
             ),
           ),
           child: Padding(

@@ -87,7 +87,7 @@ class Tarefa extends StatelessWidget {
         : tarefa.status == "Feito"
             ? iconeTarefa(
                 Icons.check_box,
-                Theme.of(context).primaryColor,
+                Color(0xFF00C569),
               )
             : tarefa.status == "Pendente"
                 ? iconeTarefa(

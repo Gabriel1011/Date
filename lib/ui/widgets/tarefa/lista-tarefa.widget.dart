@@ -37,6 +37,23 @@ class ListaTarefa extends StatelessWidget {
     }
   }
 
+  Widget fundoDismissible() {
+    return Container(
+      color: Colors.yellow.withOpacity(0.5),
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Icon(
+            Icons.archive,
+            color: Colors.yellow.withOpacity(1),
+            size: 50,
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget list() {
     return ListView.builder(
       shrinkWrap: true,
@@ -61,18 +78,27 @@ class ListaTarefa extends StatelessWidget {
           },
           background: Container(
             color: Colors.yellow.withOpacity(0.5),
-            child: Icon(
-              Icons.archive,
-              color: Colors.yellow.withOpacity(1),
-              size: 50,
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Icon(
+                  Icons.archive,
+                  color: Colors.yellow.withOpacity(1),
+                  size: 50,
+                ),
+              ),
             ),
           ),
           secondaryBackground: Container(
             color: Colors.red.withOpacity(0.5),
-            child: Icon(
-              Icons.delete,
-              color: Colors.red.withOpacity(0.5),
-              size: 50,
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Icon(
+                Icons.delete,
+                color: Colors.red.withOpacity(0.5),
+                size: 50,
+              ),
             ),
           ),
           child: Padding(

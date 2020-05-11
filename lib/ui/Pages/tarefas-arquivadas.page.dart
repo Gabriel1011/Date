@@ -10,13 +10,17 @@ class TarefasAquivadasPage extends StatelessWidget {
     var bloc = Provider.of<TarefaBloc>(context);
 
     return Scaffold(
-      body: ListView(
-        children: <Widget>[
-          AppBarDate(context, "Arquivadas", true),
-          Container(
-            child: ListaTarefaArquivadas(tarefas: bloc.tarefasArquivadas),
-          ),
-        ],
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            AppBarDate(context, "Arquivadas", true),
+            Expanded(
+              child: ListaTarefaArquivadas(
+                tarefas: bloc.tarefasArquivadas,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
