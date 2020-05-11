@@ -15,38 +15,13 @@ class Tarefa extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(5),
       child: tarefaListTitle(context, bloc),
-      // child: tarefaLinha(context, bloc),
-    );
-  }
-
-  Widget tarefaLinha(BuildContext context, TarefaBloc bloc) {
-    return Container(
-      width: double.infinity,
-      color: Colors.red,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Text("Teste"),
-            ],
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Text("Teste2kdjaskldjlaskjdlkasjdlaks"),
-            ],
-          ),
-        ],
-      ),
     );
   }
 
   Widget tarefaListTitle(BuildContext context, TarefaBloc bloc) {
-    // var status = bloc.obterStatusTarefa(tarefa.id);
     return ListTile(
       onLongPress: () {
+        if (tarefa.status == "Arquivado") return;
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -80,30 +55,55 @@ class Tarefa extends StatelessWidget {
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(gerarTextoDetalheTarefa(tarefa.detalhes)),
+          Text(
+            gerarTextoDetalheTarefa(tarefa.detalhes),
+          ),
           Text("Status: ${tarefa.status ?? "-"} | ${tarefa.dataEntrega}"),
         ],
       ),
       trailing: GestureDetector(
         onTap: () {
-          if (tarefa.status == "Feito")
-            bloc.desfazerTarefa(tarefa);
-          else
-            bloc.finalizarTarefa(tarefa);
+          definirAcao(bloc);
         },
         child: iconeStatusTarefa(context),
       ),
     );
   }
 
+  void definirAcao(TarefaBloc bloc) {
+    if (tarefa.status == "Arquivado") return;
+    if (tarefa.status == "Feito")
+      bloc.desfazerTarefa(tarefa);
+    else
+      bloc.finalizarTarefa(tarefa);
+  }
+
   Widget iconeStatusTarefa(BuildContext context) {
+    return tarefa.status == "Arquivado"
+        ? iconeTarefa(
+            Icons.archive,
+            Color(0xFFFFCC00),
+          )
+        : tarefa.status == "Feito"
+            ? iconeTarefa(
+                Icons.check_box,
+                Theme.of(context).primaryColor,
+              )
+            : tarefa.status == "Pendente"
+                ? iconeTarefa(
+                    Icons.check_box,
+                    Colors.grey,
+                  )
+                : iconeTarefa(
+                    Icons.error,
+                    Colors.red,
+                  );
+  }
+
+  Icon iconeTarefa(IconData icone, Color cor) {
     return Icon(
-      tarefa.status == "Atrasado" ? Icons.error : Icons.check_box,
-      color: tarefa.status == "Atrasado"
-          ? Colors.red
-          : tarefa.status == "Feito"
-              ? Theme.of(context).primaryColor
-              : Colors.grey,
+      icone,
+      color: cor,
       size: 35,
     );
   }

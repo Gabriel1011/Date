@@ -5,6 +5,7 @@ import 'package:uuid/uuid.dart';
 
 class TarefaBloc extends ChangeNotifier {
   var tarefas = new List<TarefaModel>();
+  var tarefasArquivadas = new List<TarefaModel>();
   var repositorioTarefa = new TarefasRepository();
   int quantidadeTarefasAtrasadas = 0;
   Map<DateTime, List<dynamic>> tarefasEventos;
@@ -12,6 +13,7 @@ class TarefaBloc extends ChangeNotifier {
   TarefaBloc() {
     tarefasEventos = {};
     tarefas = null;
+    tarefasArquivadas = null;
     getTarefas();
   }
 
@@ -68,6 +70,11 @@ class TarefaBloc extends ChangeNotifier {
     atualizar(tarefa);
   }
 
+  Future arquivarTarefa(TarefaModel tarefa) async {
+    tarefa.status = "Arquivado";
+    atualizar(tarefa);
+  }
+
   obterQuantidadeTarefasAtrasadas() {
     quantidadeTarefasAtrasadas =
         tarefas.where((p) => p.status == "Atrasado").length;
@@ -75,9 +82,14 @@ class TarefaBloc extends ChangeNotifier {
   }
 
   ordenarTarefas() {
+    gerarTarefasArquivadas();
+    tarefas = tarefas.where((p) => p.status != "Arquivado").toList();
+
     tarefas.sort((a, b) => a.dataEntregavel.compareTo(b.dataEntregavel));
+
     var tarefasNaoConcluidas =
         tarefas.where((p) => p.status != "Feito").toList();
+
     var tarefasFeitas = tarefas.where((p) => p.status == "Feito").toList();
 
     tarefasNaoConcluidas.addAll(tarefasFeitas);
@@ -93,6 +105,11 @@ class TarefaBloc extends ChangeNotifier {
     diasEventos.forEach((p) => tarefasEventos[p] =
         tarefas.where((t) => t.dataEntregavel == p).toList());
 
+    notifyListeners();
+  }
+
+  gerarTarefasArquivadas() {
+    tarefasArquivadas = tarefas.where((p) => p.status == "Arquivado").toList();
     notifyListeners();
   }
 }

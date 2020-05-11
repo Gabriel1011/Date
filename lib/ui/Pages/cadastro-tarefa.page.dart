@@ -1,3 +1,4 @@
+import 'package:date/blocs/controle.bloc.dart';
 import 'package:date/blocs/tarefa.bloc.dart';
 import 'package:date/models/tarefa.model.dart';
 import 'package:date/ui/widgets/appBarDate.dart';
@@ -199,6 +200,8 @@ class _CadastroTarefaPageState extends State<CadastroTarefaPage> {
   }
 
   criar(BuildContext context, TarefaBloc bloc) async {
+    final blocControle = Provider.of<ControleBloc>(context, listen: false);
+
     try {
       widget.tarefa.dataEntrega = widget.tarefa?.dataEntrega ??
           DateFormat('dd/MM/yyyy').format(widget.dataTarefa ?? DateTime.now());
@@ -208,11 +211,11 @@ class _CadastroTarefaPageState extends State<CadastroTarefaPage> {
           : await bloc.atualizar(widget.tarefa);
 
       if (res == null) {
-        final snackBar = SnackBar(content: Text('ops! Algo deu errado.'));
-        _scaffoldKey.currentState.showSnackBar(snackBar);
+        _scaffoldKey.currentState
+            .showSnackBar(SnackBar(content: Text('ops! Algo deu errado.')));
       } else {
-        final snackBar = SnackBar(content: Text('Tarefa salva com sucesso!'));
-        _scaffoldKey.currentState.showSnackBar(snackBar);
+        blocControle.telaPrincipal.currentState
+            .showSnackBar(SnackBar(content: Text('Tarefa salva com sucesso!')));
         Navigator.pop(context);
       }
     } catch (ex) {

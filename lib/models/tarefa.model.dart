@@ -13,7 +13,7 @@ class TarefaModel {
       {this.id,
       this.nome,
       this.detalhes,
-      // this.status,
+      this.status,
       this.dataEntrega,
       this.dataCriacao});
 
@@ -40,7 +40,7 @@ class TarefaModel {
   }
 
   String obterStatus() {
-    if (status == "Feito") {
+    if (status == "Feito" || status == "Arquivado") {
       return status;
     } else {
       return desfazerFeito();

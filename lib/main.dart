@@ -1,3 +1,4 @@
+import 'package:date/blocs/controle.bloc.dart';
 import 'package:date/blocs/theme.bloc.dart';
 import 'package:date/ui/Pages/splash.page.dart';
 import 'package:date/ui/Pages/tabs.page.dart';
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<ThemeBloc>.value(
           value: ThemeBloc(),
+        ),
+        ChangeNotifierProvider<ControleBloc>.value(
+          value: ControleBloc(),
         ),
       ],
       child: Main(),

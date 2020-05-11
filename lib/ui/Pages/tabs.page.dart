@@ -1,7 +1,8 @@
+import 'package:date/blocs/controle.bloc.dart';
 import 'package:date/blocs/tarefa.bloc.dart';
 import 'package:date/ui/Pages/calendario.page.dart';
-import 'package:date/ui/Pages/configuracao-usuario.page.dart';
 import 'package:date/ui/Pages/home.page.dart';
+import 'package:date/ui/Pages/tarefas-arquivadas.page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,6 +10,7 @@ class TabsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = Provider.of<TarefaBloc>(context);
+
     return DefaultTabController(
       length: 3,
       child: tabsView(context, bloc),
@@ -16,28 +18,50 @@ class TabsPage extends StatelessWidget {
   }
 
   Widget tabsView(BuildContext context, TarefaBloc bloc) {
+    final blocControle = Provider.of<ControleBloc>(context);
+
     return Scaffold(
+      key: blocControle.telaPrincipal,
       body: TabBarView(
-        children: [HomePage(), CalendarioPage(), ConfiguracaoUsuarioPage()],
+        children: [
+          HomePage(),
+          CalendarioPage(),
+          TarefasAquivadasPage(),
+        ],
       ),
-      bottomNavigationBar: new TabBar(
+      bottomNavigationBar: TabBar(
         tabs: [
           Tab(
-            icon: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            icon: Column(
               children: <Widget>[
-                Icon(
-                  Icons.list,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.list,
+                    ),
+                    tarefasAtrasadas(bloc),
+                  ],
                 ),
-                containerTarefasAtrasadas(bloc),
+                Text("Tarefas")
               ],
             ),
           ),
           Tab(
-            icon: new Icon(Icons.date_range),
+            icon: Column(
+              children: <Widget>[
+                Icon(Icons.date_range),
+                Text("Agendas"),
+              ],
+            ),
           ),
           Tab(
-            icon: new Icon(Icons.perm_identity),
+            icon: Column(
+              children: <Widget>[
+                Icon(Icons.archive),
+                Text("Arquivadas"),
+              ],
+            ),
           ),
         ],
         labelColor: Theme.of(context).primaryColor,
@@ -49,7 +73,7 @@ class TabsPage extends StatelessWidget {
     );
   }
 
-  Widget containerTarefasAtrasadas(TarefaBloc bloc) {
+  Widget tarefasAtrasadas(TarefaBloc bloc) {
     if (bloc.quantidadeTarefasAtrasadas > 0)
       return Container(
         width: 18,

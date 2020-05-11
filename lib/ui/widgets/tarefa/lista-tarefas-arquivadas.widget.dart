@@ -6,11 +6,11 @@ import 'package:date/ui/widgets/tarefa/tarefa.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ListaTarefa extends StatelessWidget {
+class ListaTarefaArquivadas extends StatelessWidget {
   var tarefas = new List<TarefaModel>();
   TarefaBloc bloc;
 
-  ListaTarefa({@required this.tarefas});
+  ListaTarefaArquivadas({@required this.tarefas});
 
   @override
   Widget build(BuildContext context) {
@@ -25,18 +25,6 @@ class ListaTarefa extends StatelessWidget {
     );
   }
 
-  verificarStatus(TarefaModel tarefa, BuildContext context,
-      [bool deletar = false]) {
-    if (tarefa.status != "Feito") {
-      AlertOk(
-        titulo: "Aviso!",
-        texto:
-            "Não é possível ${deletar ? "deletar" : "Arquivar"} tarefas incompletas.",
-      ).showAlertOk(context);
-      bloc.getTarefas();
-    }
-  }
-
   Widget list() {
     return ListView.builder(
       shrinkWrap: true,
@@ -44,30 +32,9 @@ class ListaTarefa extends StatelessWidget {
       itemBuilder: (context, index) {
         return Dismissible(
           onDismissed: (direction) {
-            String direcao = direction.toString();
-            if (direcao.contains("endToStart")) {
-              if (tarefas[index].status != "Feito") {
-                verificarStatus(tarefas[index], context, true);
-                return;
-              }
-              bloc.delete(tarefas[index].id);
-            } else {
-              if (tarefas[index].status != "Feito") {
-                verificarStatus(tarefas[index], context);
-                return;
-              }
-              bloc.arquivarTarefa(tarefas[index]);
-            }
+            bloc.delete(tarefas[index].id);
           },
           background: Container(
-            color: Colors.yellow.withOpacity(0.5),
-            child: Icon(
-              Icons.archive,
-              color: Colors.yellow.withOpacity(1),
-              size: 50,
-            ),
-          ),
-          secondaryBackground: Container(
             color: Colors.red.withOpacity(0.5),
             child: Icon(
               Icons.delete,
