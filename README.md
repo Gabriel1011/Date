@@ -1,6 +1,8 @@
-# date
+# Date
 
-A new Flutter project.
+Date nasceu atrevés de uma necessidade de praticar alguns tópicos em Flutter, além disso gostaria de um aplicativo no qual podesse agendar entregas dos meus cursos online. 
+
+Ainda está em desenvolvimento...
 
 ## Getting Started
 
