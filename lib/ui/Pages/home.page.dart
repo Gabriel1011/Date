@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:date/blocs/enum-categoria.dart';
 import 'package:date/blocs/tarefa.bloc.dart';
 import 'package:date/models/tarefa.model.dart';
 import 'package:date/ui/Pages/cadastro-tarefa.page.dart';
@@ -67,7 +68,7 @@ class _HomePageState extends State<HomePage> with RouteAware {
           context,
           MaterialPageRoute(
             builder: (context) => CadastroTarefaPage(
-              tarefa: TarefaModel(),
+              tarefa: new TarefaModel(),
             ),
           ),
         );

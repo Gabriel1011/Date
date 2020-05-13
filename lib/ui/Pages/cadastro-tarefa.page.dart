@@ -2,6 +2,8 @@ import 'package:date/blocs/controle.bloc.dart';
 import 'package:date/blocs/tarefa.bloc.dart';
 import 'package:date/models/tarefa.model.dart';
 import 'package:date/ui/widgets/appBarDate.dart';
+import 'package:date/ui/widgets/categoria/lista-categoria-tarefa.widget.dart';
+import 'package:date/ui/widgets/tarefa/tarefa.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -78,7 +80,7 @@ class _CadastroTarefaPageState extends State<CadastroTarefaPage> {
               Container(
                 padding: EdgeInsets.all(20),
                 width: double.infinity,
-                height: 450,
+                height: 600,
                 decoration: BoxDecoration(
                   color: Colors.black.withOpacity(0.05),
                   borderRadius: BorderRadius.all(
@@ -106,6 +108,7 @@ class _CadastroTarefaPageState extends State<CadastroTarefaPage> {
                       ),
                       TextFormField(
                         keyboardType: TextInputType.text,
+                        textCapitalization: TextCapitalization.sentences,
                         decoration: InputDecoration(
                           labelText: "Nome",
                           labelStyle: TextStyle(
@@ -134,6 +137,7 @@ class _CadastroTarefaPageState extends State<CadastroTarefaPage> {
                       ),
                       TextFormField(
                         keyboardType: TextInputType.text,
+                        textCapitalization: TextCapitalization.sentences,
                         maxLines: 3,
                         decoration: InputDecoration(
                           labelText: "Detalhes",
@@ -151,6 +155,14 @@ class _CadastroTarefaPageState extends State<CadastroTarefaPage> {
                         onChanged: (val) {
                           widget.tarefa.detalhes = val;
                         },
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        height: 90,
+                        width: double.infinity,
+                        child: ListaCategoriaTarefa(tarefa: widget.tarefa),
                       ),
                       SizedBox(
                         height: 20,
@@ -214,8 +226,8 @@ class _CadastroTarefaPageState extends State<CadastroTarefaPage> {
         _scaffoldKey.currentState
             .showSnackBar(SnackBar(content: Text('ops! Algo deu errado.')));
       } else {
-        blocControle.telaPrincipal.currentState
-            .showSnackBar(SnackBar(content: Text('Tarefa salva com sucesso!')));
+        // blocControle.telaPrincipal.currentState
+        //     .showSnackBar(SnackBar(content: Text('Tarefa salva com sucesso!')));
         Navigator.pop(context);
       }
     } catch (ex) {

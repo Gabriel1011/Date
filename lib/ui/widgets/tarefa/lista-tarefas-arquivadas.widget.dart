@@ -1,6 +1,5 @@
 import 'package:date/blocs/tarefa.bloc.dart';
 import 'package:date/models/tarefa.model.dart';
-import 'package:date/ui/share/alertDialog.widget.dart';
 import 'package:date/ui/widgets/loader.widget.dart';
 import 'package:date/ui/widgets/tarefa/tarefa.widget.dart';
 import 'package:flutter/material.dart';
@@ -37,10 +36,13 @@ class ListaTarefaArquivadas extends StatelessWidget {
           background: Container(
             color: Colors.red.withOpacity(0.5),
             child: Center(
-              child: Icon(
-                Icons.delete,
-                color: Colors.red.withOpacity(0.5),
-                size: 50,
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Icon(
+                  Icons.delete,
+                  color: Colors.red.withOpacity(0.5),
+                  size: 50,
+                ),
               ),
             ),
           ),

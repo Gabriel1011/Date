@@ -1,6 +1,7 @@
 import 'package:date/blocs/tarefa.bloc.dart';
 import 'package:date/models/tarefa.model.dart';
 import 'package:date/ui/Pages/cadastro-tarefa.page.dart';
+import 'package:date/ui/widgets/icone-tarefa.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -33,16 +34,17 @@ class Tarefa extends StatelessWidget {
       },
       isThreeLine: true,
       leading: Container(
-        height: 40,
-        width: 40,
+        padding: EdgeInsets.all(3),
+        height: 50,
+        width: 50,
         decoration: BoxDecoration(
           color: Theme.of(context).accentColor.withOpacity(0.3),
           borderRadius: BorderRadius.all(
             Radius.circular(50),
           ),
         ),
-        child: Icon(
-          Icons.book,
+        child: IconeTarefa(
+          tarefa: tarefa,
         ),
       ),
       title: Text(

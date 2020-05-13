@@ -75,6 +75,11 @@ class TarefaBloc extends ChangeNotifier {
     atualizar(tarefa);
   }
 
+  Future alterarIconeTarefa(TarefaModel tarefa, int categoria) async {
+    tarefa.categoria = categoria;
+    notifyListeners();
+  }
+
   obterQuantidadeTarefasAtrasadas() {
     quantidadeTarefasAtrasadas =
         tarefas.where((p) => p.status == "Atrasado").length;

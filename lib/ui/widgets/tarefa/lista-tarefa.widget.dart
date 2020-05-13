@@ -77,14 +77,14 @@ class ListaTarefa extends StatelessWidget {
             }
           },
           background: Container(
-            color: Colors.yellow.withOpacity(0.5),
+            color: Color(0xFFFFCC00).withOpacity(0.5),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: Icon(
                   Icons.archive,
-                  color: Colors.yellow.withOpacity(1),
+                  color: Color(0xFFFFCC00),
                   size: 50,
                 ),
               ),
@@ -94,10 +94,13 @@ class ListaTarefa extends StatelessWidget {
             color: Colors.red.withOpacity(0.5),
             child: Align(
               alignment: Alignment.centerRight,
-              child: Icon(
-                Icons.delete,
-                color: Colors.red.withOpacity(0.5),
-                size: 50,
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Icon(
+                  Icons.delete,
+                  color: Colors.red.withOpacity(0.5),
+                  size: 50,
+                ),
               ),
             ),
           ),

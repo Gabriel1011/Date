@@ -25,19 +25,24 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-  sqflite:
-  path:
+  sqflite: any
+  path: any
   provider: any  
   uuid: any
   intl: ^0.16.0  
   shared_preferences: ^0.5.3
   flare_flutter: ^1.5.15
   table_calendar: ^2.2.3
+  flutter_launcher_icons: ^0.7.5
+
+flutter_icons:
+  image_path: "assets/iconeDate.png"
+  android: true
+  ios: true
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -52,8 +57,19 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/animacoes/intro.flr
     - assets/animacoes/Success Check.flr
+    - assets/dark/cursoOnline.png
+    - assets/dark/educacao.png
+    - assets/dark/tarefas.png
+    - assets/dark/compromisso.png
+    - assets/light/cursoOnline.png
+    - assets/light/educacao.png
+    - assets/light/tarefas.png
+    - assets/light/compromisso.png
+    - assets/grey/cursoOnline.png
+    - assets/grey/educacao.png
+    - assets/grey/tarefas.png
+    - assets/grey/compromisso.png
     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -67,20 +83,8 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Montserrat
+    - family: Staatliches-Regular
       fonts:
-        - asset: assets/fonts/Montserrat.ttf
-    - family: Poppins
-      fonts:
-        - asset: assets/fonts/Poppins-Black.ttf
-        - asset: assets/fonts/Poppins-Bold.ttf
-        - asset: assets/fonts/Poppins-ExtraBold.ttf
-        - asset: assets/fonts/Poppins-ExtraLight.ttf
-        - asset: assets/fonts/Poppins-Light.ttf
-        - asset: assets/fonts/Poppins-Medium.ttf
-        - asset: assets/fonts/Poppins-Regular.ttf
-        - asset: assets/fonts/Poppins-SemiBold.ttf
-        - asset: assets/fonts/Poppins-Thin.ttf
         - asset: assets/fonts/Staatliches-Regular.ttf
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf

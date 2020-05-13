@@ -1,16 +1,18 @@
+import 'package:date/ui/Pages/tabs.page.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatelessWidget {
   Future delay(context) async {
     await new Future.delayed(
-        new Duration(
-          milliseconds: 2600,
-        ), () {
-      Navigator.pushReplacementNamed(context, '/TabsPage'
-          // MaterialPageRoute(builder: (context) => TabsPage()),
-          );
-    });
+      new Duration(
+        milliseconds: 2600,
+      ),
+      () {
+        Navigator.pushReplacementNamed(context, '/TabsPage');
+        // MaterialPageRoute(builder: (context) => TabsPage());
+      },
+    );
   }
 
   @override

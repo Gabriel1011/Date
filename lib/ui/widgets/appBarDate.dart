@@ -40,20 +40,15 @@ AppBar AppBarDate(BuildContext context, String titulo,
     title: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Icon(
-          Icons.usb,
-          color: Theme.of(context).primaryColor,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(
-            left: 10,
-          ),
-          child: Text(
-            titulo,
-            style: TextStyle(
-              color: Theme.of(context).primaryColor,
-              fontSize: 30,
-            ),
+        // Icon(
+        //   Icons.usb,
+        //   color: Theme.of(context).primaryColor,
+        // ),
+        Text(
+          titulo,
+          style: TextStyle(
+            color: Theme.of(context).primaryColor,
+            fontSize: 30,
           ),
         ),
       ],

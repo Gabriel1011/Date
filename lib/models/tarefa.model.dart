@@ -7,6 +7,7 @@ class TarefaModel {
   String status;
   String dataEntrega;
   String dataCriacao;
+  int categoria;
   DateTime dataEntregavel;
 
   TarefaModel(
@@ -24,7 +25,8 @@ class TarefaModel {
       'detalhes': detalhes,
       'status': status,
       'dataEntrega': dataEntrega,
-      'dataCriacao': dataCriacao
+      'dataCriacao': dataCriacao,
+      'categoria': categoria,
     };
   }
 
@@ -35,6 +37,7 @@ class TarefaModel {
     status = json['status'];
     dataEntrega = json['dataEntrega'];
     dataCriacao = json['dataCriacao'];
+    categoria = json['categoria'];
     status = obterStatus();
     dataEntregavel = DateFormat("dd/MM/yyyy").parse(dataEntrega);
   }

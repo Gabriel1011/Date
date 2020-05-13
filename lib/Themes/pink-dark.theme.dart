@@ -73,7 +73,7 @@ ThemeData pinkDarkTheme() {
     // primaryTextTheme:
     // sliderTheme:
     primaryColor: primaryColor,
-    accentColor: Colors.white,
+    accentColor: Colors.black87,
     // fontFamily: 'Montserrat',
     // buttonColor: Color(0xFF00C569),
     // // scaffoldBackgroundColor: backgroundColor,

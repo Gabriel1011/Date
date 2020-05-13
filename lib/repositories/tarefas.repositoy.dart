@@ -1,6 +1,5 @@
 import 'package:date/models/tarefa.model.dart';
 import 'package:date/settings.dart';
-import 'package:date/ui/widgets/tarefa/tarefa.widget.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -11,7 +10,7 @@ class TarefasRepository {
       onCreate: (db, version) {
         return db.execute(CREATE_TAREFAS_TABLE_SCRIP);
       },
-      version: 1,
+      version: 2,
     );
   }
 

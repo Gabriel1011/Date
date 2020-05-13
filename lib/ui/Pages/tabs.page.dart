@@ -21,7 +21,7 @@ class TabsPage extends StatelessWidget {
     final blocControle = Provider.of<ControleBloc>(context);
 
     return Scaffold(
-      key: blocControle.telaPrincipal,
+      // key: blocControle.telaPrincipal,
       body: TabBarView(
         children: [
           HomePage(),
